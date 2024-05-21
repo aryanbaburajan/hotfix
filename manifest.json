@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "fix your shit",
+  "version": "1.0",
+  "description": "fixes your shit.",
+  "content_scripts": [
+    {
+      "js": ["scripts/youtube.js"],
+      "matches": ["*://www.youtube.com/watch*"]
+    },
+    {
+      "js": ["scripts/scratch.js"],
+      "matches": ["*://scratch.mit.edu/projects/*"]
+    },
+    {
+      "js": ["scripts/discord.js"],
+      "matches": ["*://discord.com/channels/*"]
+    },
+    {
+      "js": ["scripts/twitter.js"],
+      "matches": ["*://x.com/*"]
+    }
+  ]
+}
