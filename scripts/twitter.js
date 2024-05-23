@@ -19,6 +19,7 @@ function inlineShowMore() {
       console.log(`HTTP error! Status: ${response.status}`);
     }
     const json = await response.json();
+    console.log(json);
     return json.tweet.text;
   };
 
@@ -65,9 +66,11 @@ function inlineShowMore() {
                     .replace("x.com", "api.fxtwitter.com")
                 );
 
-                link.parentNode.querySelector(
+                const tweetText = link.parentNode.querySelector(
                   "[data-testid='tweetText']"
-                ).innerHTML = format(description);
+                );
+                tweetText.innerHTML = format(description);
+                tweetText.style.display = "block";
 
                 link.remove();
               });
