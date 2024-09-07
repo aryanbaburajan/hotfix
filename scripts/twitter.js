@@ -25,14 +25,6 @@ function inlineShowMore() {
   };
 
   const format = (text) => {
-    text = text.replace(
-      /@(\w+)/g,
-      '<a href="/$1" role="link" style="text-overflow: unset; color: rgb(29, 155, 240); text-decoration: none;">@$1</a>'
-    );
-    text = text.replace(
-      /#(\w+)/g,
-      '<a href="/hashtag/$1" role="link" style="text-overflow: unset; color: rgb(29, 155, 240); text-decoration: none;">#$1</a>'
-    );
     const map = {
       "&": "&amp;",
       "<": "&lt;",
@@ -42,6 +34,14 @@ function inlineShowMore() {
       "/": "&#x2F;",
     };
     text = text.replace(/[&<>"'/]/gi, (match) => map[match]);
+    text = text.replace(
+      /@(\w+)/g,
+      '<a href="/$1" role="link" style="text-overflow: unset; color: rgb(29, 155, 240); text-decoration: none;">@$1</a>'
+    );
+    text = text.replace(
+      /#(\w+)/g,
+      '<a href="/hashtag/$1" role="link" style="text-overflow: unset; color: rgb(29, 155, 240); text-decoration: none;">#$1</a>'
+    );
     return text;
   };
 
