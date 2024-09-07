@@ -20,7 +20,6 @@ function inlineShowMore() {
       console.log(`HTTP error! Status: ${response.status}`);
     }
     const json = await response.json();
-    console.log(json);
     return json.tweet.text;
   };
 
@@ -76,6 +75,7 @@ function inlineShowMore() {
                     .replace("x.com", "api.fxtwitter.com")
                 );
 
+                if (link.parentNode === null) return;
                 const tweetText = link.parentNode.querySelector(
                   "[data-testid='tweetText']"
                 );
@@ -131,7 +131,7 @@ function twitterNaming() {
 
     let favicon = document.querySelector('link[rel="shortcut icon"]');
     if (favicon) {
-      favicon.href = "https://abs.twimg.com/favicons/twitter.ico"; // Replace with your new favicon ICO
+      favicon.href = "https://abs.twimg.com/favicons/twitter.ico";
     }
 
     let svgPaths = document.querySelectorAll("svg path");
