@@ -1,5 +1,13 @@
-inlineShowMore();
-twitterNaming();
+chrome.storage.local.get("twitter.inlineShowMore", function (result) {
+  if (result["twitter.inlineShowMore"] === true) {
+    inlineShowMore();
+  }
+});
+chrome.storage.local.get("twitter.twitterNaming", function (result) {
+  if (result["twitter.twitterNaming"] === true) {
+    twitterNaming();
+  }
+});
 
 function inlineShowMore() {
   const collectionHas = (a, b) => {
@@ -40,56 +48,50 @@ function inlineShowMore() {
     return text;
   };
 
-  window.addEventListener(
-    "load",
-    function () {
-      const url = window.location;
+  const url = window.location;
 
-      const onDOMChange = (records) => {
-        records.forEach((record) => {
-          record.addedNodes.forEach((node) => {
-            if (!node.querySelector) return;
+  const onDOMChange = (records) => {
+    records.forEach((record) => {
+      record.addedNodes.forEach((node) => {
+        if (!node.querySelector) return;
 
-            let link = node.querySelector(
-              "[data-testid='tweet-text-show-more-link']"
+        let link = node.querySelector(
+          "[data-testid='tweet-text-show-more-link']"
+        );
+
+        if (link) {
+          link.addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            const datetime = findParentBySelector(link, "article")
+              .querySelector("[datetime]")
+              .getAttribute("datetime");
+            const url = findParentBySelector(link, "article").querySelector(
+              "[datetime]"
+            ).parentNode.href;
+
+            const description = await getTweetContent(
+              url
+                .replace("twitter.com", "api.fxtwitter.com")
+                .replace("x.com", "api.fxtwitter.com")
             );
 
-            if (link) {
-              link.addEventListener("click", async (e) => {
-                e.preventDefault();
+            if (link.parentNode === null) return;
+            const tweetText = link.parentNode.querySelector(
+              "[data-testid='tweetText']"
+            );
+            tweetText.innerHTML = format(description);
+            tweetText.style.display = "block";
 
-                const datetime = findParentBySelector(link, "article")
-                  .querySelector("[datetime]")
-                  .getAttribute("datetime");
-                const url = findParentBySelector(link, "article").querySelector(
-                  "[datetime]"
-                ).parentNode.href;
-
-                const description = await getTweetContent(
-                  url
-                    .replace("twitter.com", "api.fxtwitter.com")
-                    .replace("x.com", "api.fxtwitter.com")
-                );
-
-                if (link.parentNode === null) return;
-                const tweetText = link.parentNode.querySelector(
-                  "[data-testid='tweetText']"
-                );
-                tweetText.innerHTML = format(description);
-                tweetText.style.display = "block";
-
-                link.remove();
-              });
-            }
+            link.remove();
           });
-        });
-      };
+        }
+      });
+    });
+  };
 
-      var observer = new MutationObserver(onDOMChange);
-      observer.observe(document.body, { childList: true, subtree: true });
-    },
-    false
-  );
+  var observer = new MutationObserver(onDOMChange);
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 function twitterNaming() {

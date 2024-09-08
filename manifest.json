@@ -20,5 +20,11 @@
       "js": ["scripts/twitter.js"],
       "matches": ["*://x.com/*"]
     }
-  ]
+  ],
+  "options_page": "settings/settings.html",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage"]
 }

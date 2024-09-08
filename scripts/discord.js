@@ -1,4 +1,8 @@
-hideBlockedMessages();
+chrome.storage.local.get("discord.hideBlockedMessages", function (result) {
+  if (result["discord.hideBlockedMessages"] === true) {
+    hideBlockedMessages();
+  }
+});
 
 function hideBlockedMessages() {
   window.addEventListener(
