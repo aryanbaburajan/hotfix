@@ -36,7 +36,7 @@ function inlineShowMore() {
       "<": "&lt;",
       ">": "&gt;",
     };
-    text = text.replace(/[<>/]/gi, (match) => map[match]);
+    text = text.replace(/[<>]/gi, (match) => map[match]);
     text = text.replace(
       /@(\w+)/g,
       '<a href="/$1" role="link" style="text-overflow: unset; color: rgb(29, 155, 240); text-decoration: none;">@$1</a>'
