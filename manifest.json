@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "hotfix",
   "version": "1.0",
-  "description": "Fixing minor quirks around the internet..",
+  "description": "Fixing minor quirks around the internet.",
   "content_scripts": [
     {
       "js": ["scripts/youtube.js"],
