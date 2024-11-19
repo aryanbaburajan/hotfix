@@ -54,3 +54,7 @@ createCheckbox(
 );
 createSection("Youtube");
 createCheckbox("Show dislike counter", "youtube.showDislikeCounter");
+createCheckbox(
+  'Show the "Play All" button on a channel\'s videos',
+  "youtube.showPlayAllChannelVideosButton"
+);

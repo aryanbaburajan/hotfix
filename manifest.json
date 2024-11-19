@@ -6,7 +6,7 @@
   "content_scripts": [
     {
       "js": ["scripts/youtube.js"],
-      "matches": ["*://www.youtube.com/watch*"]
+      "matches": ["*://www.youtube.com/*"]
     },
     {
       "js": ["scripts/scratch.js"],
