@@ -26,5 +26,13 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "permissions": ["storage"]
+  "permissions": [
+    "storage",
+    "downloads",
+    "contextMenus",
+    "offscreen",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": ["<all_urls>"]
 }
