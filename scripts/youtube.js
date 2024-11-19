@@ -68,13 +68,12 @@ function showDislikeCounter() {
       addCounter();
     });
 
-    var config = {
+    observer.observe(document.body, {
       attributes: true,
       childList: true,
       subtree: true,
       characterData: true,
-    };
-    observer.observe(document.body, config);
+    });
   }
 
   function addLocationObserver(callback) {

@@ -5,7 +5,24 @@ chrome.storage.local.get("discord.hideBlockedMessages", function (result) {
 });
 
 function hideBlockedMessages() {
-  const onDOMChange = (records) => {
+  let observer = new MutationObserver(onDOMChange);
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  let chatMessages = undefined;
+
+  function onDOMChange(records) {
+    if (chatMessages == undefined) {
+      let chatMessages = document.querySelector(
+        "ol[data-list-id='chat-messages']"
+      );
+
+      if (chatMessages != undefined) {
+        observer.disconnect();
+        observer = new MutationObserver(onDOMChange);
+        observer.observe(chatMessages, { childList: true, subtree: true });
+      }
+    }
+
     records.forEach((record) => {
       record.addedNodes.forEach((node) => {
         if (
@@ -16,8 +33,5 @@ function hideBlockedMessages() {
         }
       });
     });
-  };
-
-  var observer = new MutationObserver(onDOMChange);
-  observer.observe(document.body, { childList: true, subtree: true });
+  }
 }

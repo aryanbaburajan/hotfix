@@ -60,6 +60,9 @@ function useTurbowarpEmbed() {
         const extensionList = document.querySelectorAll(
           "div.extension-content span"
         );
+
+        if (extensionList == undefined) return;
+
         let isCloudProject = Array.from(extensionList).some((element) => {
           return element.innerText == "Cloud Variables";
         });
@@ -74,6 +77,8 @@ function useTurbowarpEmbed() {
               }
             }
           );
+
+        observer.disconnect();
       }
     }
 
