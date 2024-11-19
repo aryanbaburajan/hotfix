@@ -3,6 +3,9 @@
   "name": "hotfix",
   "version": "1.0",
   "description": "Fixing minor quirks around the internet.",
+  "icons": {
+    "16": "icon.png"
+  },
   "content_scripts": [
     {
       "js": ["scripts/youtube.js"],

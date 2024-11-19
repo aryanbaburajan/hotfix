@@ -1,4 +1,4 @@
-# hotfix
+![hotfix](./banner.png)
 
 i've been on the internet for the majority of my life at this point. so, i wrote a chrome extension to fix the shortcomings of various applications and websites.
 
