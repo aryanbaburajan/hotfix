@@ -178,7 +178,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
         let frameIds = info.frameId ? [] : void 0;
         await chrome.scripting.executeScript({
           target: { tabId: tab.id, frameIds },
-          files: ["scripts/save-image-as-type.js"], // content script and offscreen use the same file.
+          files: ["scripts/save-image.js"], // content script and offscreen use the same file.
         });
       }
       fetchAsDataURL(srcUrl, async function (error, dataurl) {
@@ -204,7 +204,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
           download(dataurl, filename);
           return;
         }
-        const offscreenSrc = "scripts/save-image-as-type.html";
+        const offscreenSrc = "scripts/save-image.html";
         if (!(await hasOffscreenDocument(offscreenSrc))) {
           await chrome.offscreen.createDocument({
             url: chrome.runtime.getURL(offscreenSrc),
