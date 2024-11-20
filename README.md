@@ -1,6 +1,6 @@
 ![hotfix](./banner.png)
 
-i've been on the internet for the majority of my life at this point. so, i wrote a chrome extension to fix the shortcomings of various applications and websites.
+after having been on the internet for a whole decade now, i'd noticed a lot flaws of various applications and websites. so, i wrote a chrome extension to fix them.
 
 features:  
 \- download webp images as png or jpg  
@@ -13,4 +13,4 @@ features:
 
 and much more coming!
 
-is there anything that irks you on a website? [open an issue for them](https://github.com/aryanbaburajan/hotpix).
+is there anything that irks you on a website? [open an issue](https://github.com/aryanbaburajan/hotfix/issues).

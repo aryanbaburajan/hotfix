@@ -22,23 +22,71 @@
         font-style: normal;
       }
 
+      input {
+        margin-right: 5px !important;
+      }
+
       label {
         display: block;
         margin: 10px 0;
+        font-size: medium;
       }
 
-      input {
-        margin-right: 5px !important;
+      p {
+        font-size: medium;
+      }
+
+      .container {
+        display: flex;
+        gap: 20px;
+        width: 90%;
+      }
+
+      .column {
+        flex: 1;
+        padding: 20px;
       }
     </style>
   </head>
   <body>
-    <img
+    <main class="container">
+      <div class="column">
+        <h1 class="uk-h2">Settings</h1>
+        <form id="settings"></form>
+      </div>
+      <div class="column">
+        <img src="../banner.png" width="100%" style="margin-bottom: 30px" />
+        <p>
+          after having been on the internet for a whole decade now, i'd noticed
+          a lot shortcomings of various applications and websites. so, i wrote a
+          chrome extension to fix them.
+        </p>
+        <br />
+        <p>
+          me? i'm <b>Aryan</b>, a highschool student from asia.
+          <a
+            href="https://aryanbaburajan.github.io"
+            class="uk-link"
+            target="_blank"
+            >check out my other stuff!</a
+          >
+        </p>
+        <br />
+        <p>
+          is there anything that irks you on a website?
+          <a
+            href="https://github.com/aryanbaburajan/hotfix/issues"
+            class="uk-link"
+            target="_blank"
+            >open an issue</a
+          >.
+        </p>
+      </div>
+    </main>
+    <!-- <img
       src="../icon.png"
       style="height: 100vh; position: absolute; right: 0px; top: 0px"
-    />
-    <h1 class="uk-h2">Settings</h1>
-    <form id="settings"></form>
+    /> -->
 
     <script src="settings.js"></script>
   </body>
