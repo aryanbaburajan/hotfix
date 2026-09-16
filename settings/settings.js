@@ -52,6 +52,11 @@ createCheckbox(
   'Rename "X" to "Twitter", and "Posts" to "Tweets"',
   "twitter.twitterNaming"
 );
+createSection("BigRock");
+createCheckbox(
+  "Hide free-trial offers in your dashboard",
+  "bigrock.hideStartFreeTrialRows"
+);
 createSection("Youtube");
 createCheckbox("Show dislike counter", "youtube.showDislikeCounter");
 createCheckbox(

@@ -22,6 +22,10 @@
     {
       "js": ["scripts/twitter.js"],
       "matches": ["*://x.com/*"]
+    },
+    {
+      "js": ["scripts/bigrock.js"],
+      "matches": ["*://myorders.bigrock.in/dashboard*"]
     }
   ],
   "options_page": "settings/settings.html",
